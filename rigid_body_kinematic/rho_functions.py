@@ -14,9 +14,16 @@ import numpy as np
 def spherical_coor(vec, origin):
     x, y, z = vec[0]-origin[0], vec[1]-origin[1], vec[2]-origin[2]
     r = np.sqrt(x**2 + y**2 + z**2)
-    theta = np.arctan(np.sqrt(x**(2) + y**(2)) / z)
-    phi = np.arctan(y / x)
+    try:
+        theta = np.arctan(np.sqrt(x**(2) + y**(2)) / z)
+    except ZeroDivisionError:
+        theta = np.pi / 2
+    try:
+        phi = np.arctan(y / x)
+    except ZeroDivisionError:
+        phi = np.pi / 2
     return r, theta, phi
+
 
 
 def asymmetric_sphere(grid, pos, constraint):

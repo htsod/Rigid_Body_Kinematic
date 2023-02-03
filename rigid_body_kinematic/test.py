@@ -15,7 +15,7 @@ from field_functions import *
 from rho_functions import *
 from numpy.random import rand
 
-coordinate = grid(100, 0)
+coordinate = grid(100, [0, 0, 0])
 sphere_obj = rigid_object()
 sphere_obj.initialize_object(coordinate, asymmetric_sphere, 10)
 

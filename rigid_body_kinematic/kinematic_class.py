@@ -30,6 +30,7 @@ class rigid_object:
             emp_vals[index] += geo_func(g, self.init_pos, constraint)
             pos_vec.append(g)
         self.rho = (emp_vals, pos_vec)
+        print(self.rho)
 
     def _get_mass(self):
         self.mass = np.sum(self.rho[0])
@@ -66,7 +67,7 @@ class rigid_object:
 
     # update object kinematic from given forces
     def _convert_pos_vec(self):
-        for index, vec in self.rho[1]:
+        for index, vec in enumerate(self.rho[1]):
             self.pos_vec[index] = vec + self.cm_pos
 
     def _eval_force(self, forces):

@@ -15,15 +15,16 @@ class grid:
     def __init__(self, N, center):
         self.N = N
         self.center = center
-        self.grid = np.array([np.array([x, y, z]) for x in range(-N/2-center[0], N/2+center[0]) for y in range(-N/2-center[1], N/2+center[1]) for z in range(-N/2-center[2], N/2+center[2])])
+        self.grid = np.array([np.array([x, y, z])
+                              for x in range(int(-N/2-center[0]), int(N/2+center[0]))
+                              for y in range(int(-N/2-center[1]), int(N/2+center[1]))
+                              for z in range(int(-N/2-center[2]), int(N/2+center[2]))])
         self.vals = np.zeros(N**3)
         self.obj_count = 0
 
     def empty_grid(self):
-        N = self.N
-        center = self.center
-        emp_grid = np.array([(x, y, z) for x in range(-N / 2 - center[0], N / 2 + center[0]) for y in
-                  range(-N / 2 - center[1], N / 2 + center[1]) for z in range(-N / 2 - center[2], N / 2 + center[2])])
+        emp_grid = np.array([(x, y, z) for x in range(-self.N / 2 - self.center[0], self.N / 2 + self.center[0]) for y in
+                  range(-self.N / 2 - self.center[1], self.N / 2 + self.center[1]) for z in range(-self.N / 2 - self.center[2], self.N / 2 + self.center[2])])
         return emp_grid
 
     def empty_vals(self):
